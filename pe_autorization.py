@@ -2,6 +2,7 @@ from selenium import webdriver
 import unittest
 from selenium.webdriver.common.by import By
 
+
 class pelogin(unittest.TestCase):
     def setUp(self):
         self.driver = webdriver.Chrome(r'D:\Programming\chromedriver.exe')
@@ -14,8 +15,5 @@ class pelogin(unittest.TestCase):
         pswrd.send_keys('Gena250394')
         auth = driver.find_element(By.XPATH,'//*[@id="id_next"]')  ##Тыкаем войти
         auth.click()
-        if driver.find_element(By.XPATH,'/html/body/div[1]/main/div/div[1]/h1/small').text == "Welcome back, 741852": ##Проверяем что вход удался
-            print ('Ништяк')
-        else:
-            print ('Шеф, все пропало!')
+        assert  driver.find_element(By.XPATH,'/html/body/div[1]/main/div/div[500]/h1/small').text == "Welcome back, 741852"
         driver.quit()
