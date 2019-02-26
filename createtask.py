@@ -28,8 +28,5 @@ class pelogin(unittest.TestCase):
         nextbtn2 = driver.find_element(By.XPATH, '//*[@id="id_create_web_app_wizard"]/div[2]/div/button[2]') ##Нажимаем next
         nextbtn2.click()
         time.sleep(15) ##Создание работает не быстро, поэтому лучше подождать немного
-        if driver.find_element(By.XPATH,'//*[@id="id_741852_pythonanywhere_com"]/div[1]/div/h3').text == "Configuration for 741852.pythonanywhere.com": ##Проверяем что все создалось без ошибок
-            print ('Ништяк')
-        else:
-            print ('Шеф, все пропало!')
+        assert driver.find_element(By.XPATH,'//*[@id="id_741852_pythonanywhere_com"]/div[1]/div/h3').text == "Configuration for 741852.pythonanywhere.com": ##Проверяем что все создалось без ошибок
         driver.quit()
